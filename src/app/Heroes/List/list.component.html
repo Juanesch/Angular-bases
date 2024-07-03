@@ -1,0 +1,36 @@
+<h3>Heroes List</h3>
+
+<!-- ngFor sirve para llamar una lista. Para poder duplicar -->
+<!-- ngIf SIRVE PARA QUITAR EL BUTTON CON UN CLICK. -->
+<!-- ng-template SIRVE PARA NO SER REDUDANTE AL QUITAR UNA ETIQUETA Y QUE NO SE MUESTRE-->
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames"
+   class="list-group-item">
+   {{ name }}
+  </li>
+</ul>
+
+<!-- CUANDO NO HAY NADA DE NOMBRES, EL DELETE BUTTON SE VA. -->
+<button *ngIf="heroNames.length > 0"(click)="removeHero()"> Delete</button>
+
+<button *ngIf="deletedHeroes" (click)="resetHero()"> Reset</button>
+
+<button (click)="resetAllHeroes()"> Reset All</button>
+
+<div *ngIf="deletedHeroes;">
+  <h3>Hero Deleted:
+    <small class="text-danger"> {{ deletedHeroes[deletedHeroes.length - 1] }} </small>
+  </h3>
+</div>
+
+
+
+<!-- <ng-template #nothingWasDeleted>
+<h3>No Hero Deleted.</h3>
+</ng-template> -->
+
+<div *ngIf="deletedHeroes.length === 0">
+  <h3>No Hero Deleted.</h3>
+</div>
+
